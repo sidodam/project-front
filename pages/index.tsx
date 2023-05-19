@@ -42,7 +42,7 @@ const Home: NextPage = () => {
         <title>Spain Travels</title>
       </Head>
       <HeaderNavbar></HeaderNavbar>
-      <HomeHeader></HomeHeader>
+
       <div className="mt-20   md:mx-20 mx-5">
         {/* <p className="text-[1.5rem] font-bold">Top destination</p>
         <p className="w-1/2">

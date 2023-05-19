@@ -8,17 +8,13 @@ import { DateRange } from 'react-date-range'
 import 'react-date-range/dist/styles.css' // main css file
 import 'react-date-range/dist/theme/default.css' // theme css file
 import { format } from 'date-fns'
-import Link from 'next/link'
-import Router from "next/router";
+import Router from 'next/router'
 import { useMediaQuery } from '@mantine/hooks'
 
 import { searchState } from '../componenets/searchState'
 import { useRecoilState } from 'recoil'
 
-
-
 function HeaderSearchBar() {
-
   const [openDate, setOpenDate] = useState(false)
   const [destination, setDestination] = useState('')
   const [openOptions, setOpenOptions] = useState(false)
@@ -45,19 +41,22 @@ function HeaderSearchBar() {
     })
   }
 
-
   const [obj, setObj] = useRecoilState(searchState)
   const handleClick = () => {
-
     Router.push({
       pathname: '/discover',
       query: {
-
-        destination, adult: JSON.stringify(options.adult), room: JSON.stringify(options.room), startDate: JSON.stringify(date.map((d) => format(d.startDate, 'yyyy-MM-dd'))),
-        endDate: JSON.stringify(date.map((d) => format(d.endDate, 'yyyy-MM-dd')))
-      }
-    }
-    )
+        destination,
+        adult: JSON.stringify(options.adult),
+        room: JSON.stringify(options.room),
+        startDate: JSON.stringify(
+          date.map((d) => format(d.startDate, 'yyyy-MM-dd')),
+        ),
+        endDate: JSON.stringify(
+          date.map((d) => format(d.endDate, 'yyyy-MM-dd')),
+        ),
+      },
+    })
 
     setObj({
       destination: destination,
@@ -65,12 +64,9 @@ function HeaderSearchBar() {
       adult: options.adult,
       room: options.room,
       startDate: date.map((d) => format(d.startDate, 'yyyy-MM-dd')),
-      endDate: date.map((d) => format(d.endDate, 'yyyy-MM-dd'))
+      endDate: date.map((d) => format(d.endDate, 'yyyy-MM-dd')),
     })
   }
-
-
-
 
   return (
     <div className={`flex  xl:flex-row flex-col  gap-4  `}>
@@ -97,7 +93,7 @@ function HeaderSearchBar() {
         </span>
 
         {openDate && (
-          <div >
+          <div>
             <DateRange
               editableDateInputs={true}
               onChange={(item: any) => setDate([item.selection])}
@@ -105,7 +101,6 @@ function HeaderSearchBar() {
               ranges={date}
               className="absolute"
               minDate={new Date()}
-
             />
           </div>
         )}
@@ -119,10 +114,7 @@ function HeaderSearchBar() {
           {`${options.adult} adults . ${options.room} rooms`}
         </span>
         {openOptions && (
-          <div
-
-            className="flex flex-col shadow-lg  p-2 absolute top-14  bg-white  items-center "
-          >
+          <div className="flex flex-col shadow-lg  p-2 absolute top-14  bg-white  items-center ">
             <div className="   text-gray-500 p-2   flex  gap-3 shadow-sm">
               <span>Adult</span>
               <button
